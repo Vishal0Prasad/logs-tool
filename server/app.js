@@ -15,7 +15,7 @@ app.use(
 app.get("/logs", (req, res) => {
 	res.status(200);
 	const queryParams = req.query;
-	console.log(queryParams);˝
+	console.log(queryParams);
 	fs.readFile("data/log_entries.json", "utf-8", (_err, data) => {
 		const logs = JSON.parse(data);
 		const filteredLogs = logs
