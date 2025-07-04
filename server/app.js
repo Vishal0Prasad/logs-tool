@@ -12,11 +12,42 @@ app.use(
 	})
 );
 
-app.get("/logs", (_req, res) => {
+app.get("/logs", (req, res) => {
 	res.status(200);
+	const queryParams = req.query;
+	console.log(queryParams);˝
 	fs.readFile("data/log_entries.json", "utf-8", (_err, data) => {
 		const logs = JSON.parse(data);
-		return res.status(200).json(logs);
+		const filteredLogs = logs
+			.filter((log) => {
+				if (!queryParams.search) return true;
+				return log.message
+					.toLowerCase()
+					.includes(queryParams.search.toLowerCase());
+			})
+			.filter((log) => {
+				if (!queryParams.levels) return true;
+				const levels = queryParams.levels.split(",");
+				return levels.includes(log.level);
+			})
+			.filter((log) => {
+				if (!queryParams.resourceId) return true;
+				return log.resourceId.includes(queryParams.resourceId);
+			})
+			.filter((log) => {
+				const logDate = new Date(log.timestamp);
+				const startDateInput = queryParams.startDate;
+				const endDateInput = queryParams.endDate;
+				const startDate = startDateInput ? new Date(startDateInput) : null;
+				const endDate = endDateInput ? new Date(endDateInput) : null;
+
+				if (endDate) endDate.setHours(23, 59, 59, 999);
+
+				const isAfterStart = !startDate || logDate >= startDate;
+				const isBeforeEnd = !endDate || logDate <= endDate;
+				return isAfterStart && isBeforeEnd;
+			});
+		return res.status(200).json(filteredLogs);
 	});
 });
 

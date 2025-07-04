@@ -12,7 +12,7 @@ export const Filter = () => {
 
 	const [logs, setLogs] = useState([]);
 
-	const processSearch = debounce((e: any) => {
+	const handleSearch = debounce((e: any) => {
 		console.log(e.target.id, "---", e.target.value);
 		switch (e.target.id) {
 			case "search":
@@ -27,9 +27,40 @@ export const Filter = () => {
 		// setSearch()
 	}, 1000);
 
+	const handleSelect = (e: any) => {
+		const newValue = [e.target.value];
+		setLevels(newValue as never[]);
+	};
+
+	const handleDate = (e: any) => {
+		console.log(e.target.id, e.target.value);
+		switch (e.target.id) {
+			case "start-date":
+				setSdate(e.target.value);
+				break;
+			case "end-date":
+				setEdate(e.target.value);
+				break;
+			default:
+				break;
+		}
+	};
+
+	const formQuery = () => {
+		console.log(levels);
+		return [
+			`search=${search}`,
+			`levels=${levels.join(",")}`,
+			`resourceId=${resourceId}`,
+			`startDate=${sdate}`,
+			`endDate=${edate}`,
+		].join("&");
+	};
+
 	const fetchLogs = () => {
+		const query = formQuery();
 		axios
-			.get("http://localhost:3000/logs")
+			.get(`http://localhost:3000/logs?${query}`)
 			.then((res) => {
 				setLogs(res.data);
 			})
@@ -44,31 +75,36 @@ export const Filter = () => {
 				id="search"
 				className="search"
 				placeholder="Search"
-				onKeyUp={processSearch}
+				onKeyUp={handleSearch}
 			/>
-			<button>Search</button>
-			<select id="levels">
-				<option value="error">Error</option>
-				<option value="warning">Warning</option>
-				<option value="info">Info</option>
+			<select id="levels" onChange={handleSelect}>
+				<option key="error" value="error">
+					Error
+				</option>
+				<option key="warning" value="warning">
+					Warning
+				</option>
+				<option key="info" value="info">
+					Info
+				</option>
 			</select>
 			<input
 				id="resourceId"
 				className="resourceId"
 				placeholder="Resource Id"
-				onKeyUp={processSearch}
+				onKeyUp={handleSearch}
 			></input>
 			<div>
 				<label htmlFor="start-date">From: </label>
-				<input type="date" id="start-date" />
+				<input type="date" id="start-date" onChange={handleDate} />
 				<label htmlFor="end-date">To: </label>
-				<input type="date" id="end-date" />
+				<input type="date" id="end-date" onChange={handleDate} />
 			</div>
 			<button onClick={fetchLogs}>Apply</button>
 			<div>
 				{logs.length > 0 ? (
-					logs.map((log) => {
-						return <div>{log.message}</div>;
+					logs.map((log, index) => {
+						return <div key={index}>{log.message}</div>;
 					})
 				) : (
 					<div>No Logs</div>
