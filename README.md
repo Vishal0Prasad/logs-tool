@@ -23,10 +23,9 @@ Run the frontend and server into 2 separate terminals
    cd server
    ```
 
-````
 2. ```
-yarn install
-````
+   yarn install
+   ```
 
 3. ```
    yarn dev
@@ -38,19 +37,13 @@ yarn install
    cd frontend
    ```
 
-````
-
 2. ```
    yarn install
    ```
 
-````
-
 3. ```
    yarn dev
    ```
-
-````
 
 ## Following libraries being used
 
@@ -69,4 +62,7 @@ yarn install
 ```
 
 ```
-````
+
+```
+
+```
