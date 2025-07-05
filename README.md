@@ -10,19 +10,22 @@ Most of the components are native except for a few which can be complex.
 
 ### How to run
 
+1. Go to [Link text](https://github.com/Vishal0Prasad/logs-tool)
+2. `git clone https://github.com/Vishal0Prasad/logs-tool.git`
+
 Run the frontend and server into 2 separate terminals
 
 ## Server
 
-1. cd server
-2. yarn install
-3. yarn dev
+1. `cd server`
+2. `yarn install`
+3. `yarn dev`
 
 ## Frontend
 
-1. cd frontend
-2. yarn install
-3. yarn dev
+1. `cd frontend`
+2. `yarn install`
+3. `yarn dev`
 
 ## Following libraries being used
 
