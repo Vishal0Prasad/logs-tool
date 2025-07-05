@@ -58,11 +58,3 @@ Run the frontend and server into 2 separate terminals
 
 1. `chalk` for colored messages
 2. `cors` for cors management
-
-```
-
-```
-
-```
-
-```
