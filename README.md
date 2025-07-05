@@ -58,3 +58,24 @@ Run the frontend and server into 2 separate terminals
 
 1. `chalk` for colored messages
 2. `cors` for cors management
+
+## Add a new Log
+
+While there are 10 log entries already, user can still add a new log after running the server with the help of following POST request
+
+```
+curl -X POST http://localhost:3000/logs \
+  -H "Content-Type: application/json" \
+  -d '{
+    "level": "error",
+    "message": "Failed to connect to database.",
+    "resourceId": "server-1234",
+    "timestamp": "2023-09-15T08:00:00Z",
+    "traceId": "abc-xyz-123",
+    "spanId": "span-456",
+    "commit": "5e5342f",
+    "metadata": {
+      "parentResourceId": "server-5678"
+    }
+  }'
+```
