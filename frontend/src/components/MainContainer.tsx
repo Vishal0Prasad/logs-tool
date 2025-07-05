@@ -75,6 +75,7 @@ export const MainContainer = () => {
 			})
 			.catch(() => {
 				console.error("Error fetching logs");
+				setLogs([]);
 			});
 	};
 

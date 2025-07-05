@@ -1,5 +1,6 @@
 import Select, { type MultiValue } from "react-select";
 import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
 
 type OptionType = {
@@ -18,7 +19,6 @@ type FilterState = {
 	};
 };
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Filter = ({
 	filters,
 	actions,
@@ -33,7 +33,8 @@ export const Filter = ({
 	];
 
 	return (
-		<div className="flex items-center space-x-4 p-4 bg-gray-100">
+		<div className="flex justify-center items-center space-x-4 p-4 bg-gray-100">
+			<img src="/filter.png" alt="My Icon" width={32} height={32} />
 			<input
 				id="search"
 				placeholder="Search"
@@ -79,14 +80,14 @@ export const Filter = ({
 					maxDate={filters.dates.end ? new Date(filters.dates.end) : new Date()}
 					showMonthDropdown
 					showYearDropdown
-					dropdownMode="select"
+					showIcon
 					onChange={(date: Date | null) =>
 						actions.handleDate("start", date?.toISOString().split("T")[0])
 					}
 				/>
 			</div>
 			<div>
-				<label htmlFor="start-date">To: </label>
+				<label htmlFor="end-date">To: </label>
 				<DatePicker
 					id="end-date"
 					className="bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-400 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
@@ -96,6 +97,7 @@ export const Filter = ({
 					maxDate={new Date()}
 					showMonthDropdown
 					showYearDropdown
+					showIcon
 					onChange={(date: Date | null) =>
 						actions.handleDate("end", date?.toISOString().split("T")[0])
 					}
