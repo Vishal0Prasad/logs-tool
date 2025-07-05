@@ -1,7 +1,17 @@
-export const LogsArea = ({ data }: any) => {
+import { Loader } from "./Loader";
+
+export const LogsArea = ({
+	loading,
+	data,
+}: {
+	loading: boolean;
+	data: any;
+}) => {
 	return (
 		<div className="bg-gray-900 text-gray-100 rounded-xl p-4 shadow-lg h-full overflow-y-auto space-y-3">
-			{data.length > 0 ? (
+			{loading ? (
+				<Loader />
+			) : data.length > 0 ? (
 				data.map((log: any, index: number) => {
 					return (
 						<div

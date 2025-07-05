@@ -32,7 +32,7 @@ export const MainContainer = () => {
 			end: "",
 		},
 	});
-
+	const [loading, setLoading] = useState(true);
 	const [logs, setLogs] = useState([]);
 
 	const actions = {
@@ -68,6 +68,7 @@ export const MainContainer = () => {
 
 	const fetchLogs = () => {
 		const query = formQuery();
+		setLoading(true);
 		axios
 			.get(`http://localhost:3000/logs?${query}`)
 			.then((res) => {
@@ -76,6 +77,9 @@ export const MainContainer = () => {
 			.catch(() => {
 				console.error("Error fetching logs");
 				setLogs([]);
+			})
+			.finally(() => {
+				setLoading(false);
 			});
 	};
 
@@ -86,7 +90,7 @@ export const MainContainer = () => {
 	return (
 		<div>
 			<Filter filters={filters} actions={actions} />
-			<LogsArea data={logs} />
+			<LogsArea loading={loading} data={logs} />
 		</div>
 	);
 };
