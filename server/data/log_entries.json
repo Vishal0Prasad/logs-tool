@@ -1,142 +1,154 @@
 [
-	{
-		"level": "error",
-		"message": "Database migration failed on version 2.3.4.",
-		"resourceId": "db-migrator-001",
-		"timestamp": "2020-06-14T05:32:19Z",
-		"traceId": "trace-01",
-		"spanId": "span-001",
-		"commit": "c4e29f1",
-		"metadata": {
-			"parentResourceId": "deploy-service-21",
-			"env": "production",
-			"region": "us-east-1"
-		}
-	},
-	{
-		"level": "warn",
-		"message": "SSL certificate will expire in 5 days.",
-		"resourceId": "web-gateway-ssl",
-		"timestamp": "2021-11-23T18:07:41Z",
-		"traceId": "trace-02",
-		"spanId": "span-002",
-		"commit": "b7a82dc",
-		"metadata": {
-			"parentResourceId": "cert-manager-01",
-			"env": "staging",
-			"region": "eu-west-3"
-		}
-	},
-	{
-		"level": "info",
-		"message": "User payment processed successfully.",
-		"resourceId": "payment-engine",
-		"timestamp": "2022-01-05T13:48:00Z",
-		"traceId": "trace-03",
-		"spanId": "span-003",
-		"commit": "d901e4f",
-		"metadata": {
-			"parentResourceId": "api-v2-gateway",
-			"userId": "user-9921",
-			"region": "us-west-2"
-		}
-	},
-	{
-		"level": "debug",
-		"message": "Refreshing OAuth token for service account.",
-		"resourceId": "auth-proxy-service",
-		"timestamp": "2023-03-17T00:14:39Z",
-		"traceId": "trace-04",
-		"spanId": "span-004",
-		"commit": "6fe12aa",
-		"metadata": {
-			"parentResourceId": "session-manager",
-			"accountId": "svc-3290",
-			"env": "dev"
-		}
-	},
-	{
-		"level": "error",
-		"message": "Unable to reach external API: timeout after 20s.",
-		"resourceId": "integration-layer",
-		"timestamp": "2024-08-09T21:22:11Z",
-		"traceId": "trace-05",
-		"spanId": "span-005",
-		"commit": "9fd123a",
-		"metadata": {
-			"parentResourceId": "scheduler-core",
-			"env": "qa",
-			"region": "ap-northeast-1"
-		}
-	},
-	{
-		"level": "warn",
-		"message": "Low available memory: only 256MB left.",
-		"resourceId": "node-memory-watch",
-		"timestamp": "2025-02-26T04:06:52Z",
-		"traceId": "trace-06",
-		"spanId": "span-006",
-		"commit": "2f3c5e9",
-		"metadata": {
-			"parentResourceId": "autoscaler-agent",
-			"env": "production",
-			"region": "us-central-1"
-		}
-	},
-	{
-		"level": "info",
-		"message": "Service health check passed.",
-		"resourceId": "health-monitor-09",
-		"timestamp": "2021-09-01T10:00:00Z",
-		"traceId": "trace-07",
-		"spanId": "span-007",
-		"commit": "bd82e11",
-		"metadata": {
-			"parentResourceId": "load-balancer-04",
-			"env": "staging",
-			"region": "sa-east-1"
-		}
-	},
-	{
-		"level": "debug",
-		"message": "Cache cleared for key: product_5432.",
-		"resourceId": "cache-service",
-		"timestamp": "2023-12-30T16:43:21Z",
-		"traceId": "trace-08",
-		"spanId": "span-008",
-		"commit": "73c4ab0",
-		"metadata": {
-			"parentResourceId": "cache-manager",
-			"cacheKey": "product_5432",
-			"attempt": 3
-		}
-	},
-	{
-		"level": "info",
-		"message": "New deployment triggered via CI pipeline.",
-		"resourceId": "ci-runner-007",
-		"timestamp": "2020-04-10T15:29:10Z",
-		"traceId": "trace-09",
-		"spanId": "span-009",
-		"commit": "3e88cfe",
-		"metadata": {
-			"parentResourceId": "build-server-02",
-			"branch": "main",
-			"env": "qa"
-		}
-	},
-	{
-		"level": "warn",
-		"message": "API response time degraded: 1100ms average.",
-		"resourceId": "api-monitor",
-		"timestamp": "2022-10-18T08:55:36Z",
-		"traceId": "trace-10",
-		"spanId": "span-010",
-		"commit": "4fc29a7",
-		"metadata": {
-			"parentResourceId": "traffic-analyzer",
-			"region": "af-south-1",
-			"env": "production"
-		}
-	}
+    {
+        "level": "error",
+        "message": "Database migration failed on version 2.3.4.",
+        "resourceId": "db-migrator-001",
+        "timestamp": "2020-06-14T05:32:19Z",
+        "traceId": "trace-01",
+        "spanId": "span-001",
+        "commit": "c4e29f1",
+        "metadata": {
+            "parentResourceId": "deploy-service-21",
+            "env": "production",
+            "region": "us-east-1"
+        }
+    },
+    {
+        "level": "warn",
+        "message": "SSL certificate will expire in 5 days.",
+        "resourceId": "web-gateway-ssl",
+        "timestamp": "2021-11-23T18:07:41Z",
+        "traceId": "trace-02",
+        "spanId": "span-002",
+        "commit": "b7a82dc",
+        "metadata": {
+            "parentResourceId": "cert-manager-01",
+            "env": "staging",
+            "region": "eu-west-3"
+        }
+    },
+    {
+        "level": "info",
+        "message": "User payment processed successfully.",
+        "resourceId": "payment-engine",
+        "timestamp": "2022-01-05T13:48:00Z",
+        "traceId": "trace-03",
+        "spanId": "span-003",
+        "commit": "d901e4f",
+        "metadata": {
+            "parentResourceId": "api-v2-gateway",
+            "userId": "user-9921",
+            "region": "us-west-2"
+        }
+    },
+    {
+        "level": "debug",
+        "message": "Refreshing OAuth token for service account.",
+        "resourceId": "auth-proxy-service",
+        "timestamp": "2023-03-17T00:14:39Z",
+        "traceId": "trace-04",
+        "spanId": "span-004",
+        "commit": "6fe12aa",
+        "metadata": {
+            "parentResourceId": "session-manager",
+            "accountId": "svc-3290",
+            "env": "dev"
+        }
+    },
+    {
+        "level": "error",
+        "message": "Unable to reach external API: timeout after 20s.",
+        "resourceId": "integration-layer",
+        "timestamp": "2024-08-09T21:22:11Z",
+        "traceId": "trace-05",
+        "spanId": "span-005",
+        "commit": "9fd123a",
+        "metadata": {
+            "parentResourceId": "scheduler-core",
+            "env": "qa",
+            "region": "ap-northeast-1"
+        }
+    },
+    {
+        "level": "warn",
+        "message": "Low available memory: only 256MB left.",
+        "resourceId": "node-memory-watch",
+        "timestamp": "2025-02-26T04:06:52Z",
+        "traceId": "trace-06",
+        "spanId": "span-006",
+        "commit": "2f3c5e9",
+        "metadata": {
+            "parentResourceId": "autoscaler-agent",
+            "env": "production",
+            "region": "us-central-1"
+        }
+    },
+    {
+        "level": "info",
+        "message": "Service health check passed.",
+        "resourceId": "health-monitor-09",
+        "timestamp": "2021-09-01T10:00:00Z",
+        "traceId": "trace-07",
+        "spanId": "span-007",
+        "commit": "bd82e11",
+        "metadata": {
+            "parentResourceId": "load-balancer-04",
+            "env": "staging",
+            "region": "sa-east-1"
+        }
+    },
+    {
+        "level": "debug",
+        "message": "Cache cleared for key: product_5432.",
+        "resourceId": "cache-service",
+        "timestamp": "2023-12-30T16:43:21Z",
+        "traceId": "trace-08",
+        "spanId": "span-008",
+        "commit": "73c4ab0",
+        "metadata": {
+            "parentResourceId": "cache-manager",
+            "cacheKey": "product_5432",
+            "attempt": 3
+        }
+    },
+    {
+        "level": "info",
+        "message": "New deployment triggered via CI pipeline.",
+        "resourceId": "ci-runner-007",
+        "timestamp": "2020-04-10T15:29:10Z",
+        "traceId": "trace-09",
+        "spanId": "span-009",
+        "commit": "3e88cfe",
+        "metadata": {
+            "parentResourceId": "build-server-02",
+            "branch": "main",
+            "env": "qa"
+        }
+    },
+    {
+        "level": "warn",
+        "message": "API response time degraded: 1100ms average.",
+        "resourceId": "api-monitor",
+        "timestamp": "2022-10-18T08:55:36Z",
+        "traceId": "trace-10",
+        "spanId": "span-010",
+        "commit": "4fc29a7",
+        "metadata": {
+            "parentResourceId": "traffic-analyzer",
+            "region": "af-south-1",
+            "env": "production"
+        }
+    },
+    {
+        "level": "error",
+        "message": "Failed to connect to docker.",
+        "resourceId": "server-1234",
+        "timestamp": "2023-09-15T08:00:00Z",
+        "traceId": "abc-xyz-123",
+        "spanId": "span-456",
+        "commit": "5e5342f",
+        "metadata": {
+            "parentResourceId": "server-5678"
+        }
+    }
 ]

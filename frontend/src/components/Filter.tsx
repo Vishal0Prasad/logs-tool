@@ -49,6 +49,7 @@ export const Filter = ({
 				onChange={(selected: MultiValue<OptionType>) => {
 					actions.handleSelect("levels", selected);
 				}}
+				placeholder={"Log Level"}
 				styles={{
 					container: (base) => ({
 						...base,
@@ -62,6 +63,11 @@ export const Filter = ({
 					multiValueLabel: (styles) => ({
 						...styles,
 						color: "white",
+					}),
+					placeholder: (styles) => ({
+						...styles,
+						fontSize: "0.875rem",
+						lineHeight: "1.25rem",
 					}),
 				}}
 			/>
