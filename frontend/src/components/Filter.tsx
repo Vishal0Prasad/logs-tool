@@ -120,7 +120,7 @@ export const Filter = ({
 					onChange={(date: Date | null) => {
 						if (date === null) {
 							console.log(date);
-							actions.handleDate("start", "");
+							actions.handleDate("end", "");
 						}
 						actions.handleDate("end", date?.toISOString().split("T")[0]);
 					}}
