@@ -37,7 +37,7 @@ export const MainContainer = () => {
 	const [loading, setLoading] = useState(true);
 	const [logs, setLogs] = useState([]);
 
-	const resetRef = useRef(false);
+	const resetRef = useRef(true);
 
 	const actions = {
 		handleSearch: (key: string, value: string) => {
