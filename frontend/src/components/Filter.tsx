@@ -86,7 +86,14 @@ export const Filter = ({
 				<DatePicker
 					id="start-date"
 					className="w-[200px] bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-400 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-					value={filters.dates.start}
+					value={
+						filters.dates.start
+							? new Date(filters.dates.start)
+									.toLocaleDateString()
+									.split("/")
+									.join("-")
+							: ""
+					}
 					selected={filters.dates.start ? new Date(filters.dates.start) : null}
 					maxDate={filters.dates.end ? new Date(filters.dates.end) : new Date()}
 					showMonthDropdown
@@ -100,7 +107,8 @@ export const Filter = ({
 							console.log(date);
 							actions.handleDate("start", "");
 						}
-						actions.handleDate("start", date?.toISOString().split("T")[0]);
+						console.log(date?.toISOString());
+						actions.handleDate("start", date?.toISOString());
 					}}
 				/>
 			</div>
@@ -108,7 +116,14 @@ export const Filter = ({
 				<DatePicker
 					id="end-date"
 					className="w-[200px] bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-400 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-					value={filters.dates.end}
+					value={
+						filters.dates.end
+							? new Date(filters.dates.end)
+									.toLocaleDateString()
+									.split("/")
+									.join("-")
+							: ""
+					}
 					selected={filters.dates.end ? new Date(filters.dates.end) : null}
 					minDate={new Date(filters.dates.start)}
 					maxDate={new Date()}
@@ -122,7 +137,7 @@ export const Filter = ({
 							console.log(date);
 							actions.handleDate("end", "");
 						}
-						actions.handleDate("end", date?.toISOString().split("T")[0]);
+						actions.handleDate("end", date?.toISOString());
 					}}
 				/>
 			</div>
