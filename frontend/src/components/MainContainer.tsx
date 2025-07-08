@@ -61,8 +61,8 @@ export const MainContainer = () => {
 				.map((level: OptionType) => level.value)
 				.join(",")}`,
 			`resourceId=${filters.resourceId}`,
-			`startDate=${filters.dates.start}`,
-			`endDate=${filters.dates.end}`,
+			`startDate=${filters?.dates?.start || ""}`,
+			`endDate=${filters?.dates?.end || ""}`,
 		].join("&");
 	};
 

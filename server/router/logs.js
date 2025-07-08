@@ -29,6 +29,7 @@ router.get("/logs", (req, res, next) => {
 					return log.resourceId.includes(queryParams.resourceId);
 				})
 				.filter((log) => {
+					if (!queryParams.startDate && !queryParams.endDate) return true;
 					const logDate = new Date(log.timestamp);
 					const startDateInput = queryParams.startDate;
 					const endDateInput = queryParams.endDate;

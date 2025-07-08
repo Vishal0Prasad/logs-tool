@@ -89,9 +89,15 @@ export const Filter = ({
 					showYearDropdown
 					showIcon
 					placeholderText="From"
-					onChange={(date: Date | null) =>
-						actions.handleDate("start", date?.toISOString().split("T")[0])
-					}
+					isClearable={true}
+					onChange={(date: Date | null) => {
+						console.log(date);
+						if (date === null) {
+							console.log(date);
+							actions.handleDate("start", "");
+						}
+						actions.handleDate("start", date?.toISOString().split("T")[0]);
+					}}
 				/>
 			</div>
 			<div>
@@ -106,9 +112,14 @@ export const Filter = ({
 					showYearDropdown
 					showIcon
 					placeholderText="To"
-					onChange={(date: Date | null) =>
-						actions.handleDate("end", date?.toISOString().split("T")[0])
-					}
+					isClearable={true}
+					onChange={(date: Date | null) => {
+						if (date === null) {
+							console.log(date);
+							actions.handleDate("start", "");
+						}
+						actions.handleDate("end", date?.toISOString().split("T")[0]);
+					}}
 				/>
 			</div>
 		</div>
