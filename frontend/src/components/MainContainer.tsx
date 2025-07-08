@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import { debounce } from "lodash";
+import { useEffect, useState, useRef } from "react";
+import { debounce, cloneDeep } from "lodash";
 import axios from "axios";
 
 import { Filter } from "./Filter";
@@ -22,23 +22,27 @@ type FilterState = {
 	};
 };
 
+const initState: FilterState = {
+	search: "",
+	levels: [],
+	resourceId: "",
+	dates: {
+		start: "",
+		end: "",
+	},
+};
+
 export const MainContainer = () => {
-	const [filters, setFilters] = useState<FilterState>({
-		search: "",
-		levels: [],
-		resourceId: "",
-		dates: {
-			start: "",
-			end: "",
-		},
-	});
+	const [filters, setFilters] = useState<FilterState>(cloneDeep(initState));
 	const [loading, setLoading] = useState(true);
 	const [logs, setLogs] = useState([]);
 
+	const resetRef = useRef(false);
+
 	const actions = {
-		handleSearch: debounce((key: string, value: string) => {
+		handleSearch: (key: string, value: string) => {
 			setFilters((prev: FilterState) => ({ ...prev, [key]: value }));
-		}, 1000),
+		},
 		handleSelect: (key: string, value: MultiValue<OptionType>) => {
 			console.log(value, key);
 			setFilters((prev: FilterState) => ({ ...prev, [key]: value }));
@@ -51,6 +55,10 @@ export const MainContainer = () => {
 					[key]: value,
 				},
 			}));
+		},
+		handleReset: () => {
+			resetRef.current = true;
+			setFilters(cloneDeep(initState));
 		},
 	};
 
@@ -83,9 +91,25 @@ export const MainContainer = () => {
 			});
 	};
 
+	const debouncedFetch = debounce(fetchLogs, 1000);
+
+	// This useEffect is to handle delayed search input text change using debounce
+	// This is to avoid 2 api calls when reset button is clicked
+	useEffect(() => {
+		// When reset button clicked, skip this debounced api call
+		if (resetRef.current) return;
+		debouncedFetch();
+		return () => debouncedFetch.cancel(); // clean up
+	}, [filters.search, filters.resourceId]);
+
 	useEffect(() => {
 		fetchLogs();
-	}, [filters]);
+		// Use this useEffect when reset all is clicked
+		// Changge the value to false after the api call is triggered
+		if (resetRef.current) {
+			resetRef.current = false;
+		}
+	}, [filters.levels, filters.dates.start, filters.dates.end]);
 
 	return (
 		<div>

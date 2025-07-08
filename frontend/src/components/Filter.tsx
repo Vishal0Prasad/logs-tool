@@ -38,7 +38,8 @@ export const Filter = ({
 			<input
 				id="search"
 				placeholder="Search"
-				onKeyUp={(e: any) => actions.handleSearch("search", e.target.value)}
+				value={filters.search}
+				onChange={(e: any) => actions.handleSearch("search", e.target.value)}
 				className="w-[200px] bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-400 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
 			/>
 
@@ -76,7 +77,10 @@ export const Filter = ({
 				id="resourceId"
 				className="w-[200px] bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-400 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
 				placeholder="Resource Id"
-				onKeyUp={(e: any) => actions.handleSearch("resourceId", e.target.value)}
+				value={filters.resourceId}
+				onChange={(e: any) =>
+					actions.handleSearch("resourceId", e.target.value)
+				}
 			></input>
 			<div>
 				<DatePicker
@@ -122,6 +126,12 @@ export const Filter = ({
 					}}
 				/>
 			</div>
+			<button
+				className="px-4 py-2 rounded-md bg-gray-200 text-gray-800 text-sm hover:bg-gray-300 transition-colors duration-200"
+				onClick={actions.handleReset}
+			>
+				Reset All
+			</button>
 		</div>
 	);
 };
