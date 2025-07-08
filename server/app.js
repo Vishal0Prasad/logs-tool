@@ -22,7 +22,7 @@ app.use(errorHandler);
 app.listen(PORT, (error) => {
 	if (error) {
 		console.log(chalk.redBright("\n\nError starting the server..."));
+	} else {
+		console.log(chalk.green("\nServer is up and running on Port " + PORT));
 	}
-
-	console.log(chalk.green("\nServer is up and running on Port " + PORT));
 });
