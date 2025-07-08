@@ -41,7 +41,7 @@ router.get("/logs", (req, res, next) => {
 					const isBeforeEnd = !endDate || logDate <= endDate;
 					return isAfterStart && isBeforeEnd;
 				})
-				.sort((a, b) => b.timestamp - a.timestamp);
+				.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
 			return res.status(200).json(filteredLogs);
 		});
 	} catch (err) {
