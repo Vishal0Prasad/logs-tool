@@ -8,7 +8,7 @@ There is no Apply or Filter button used.
 Tailwind is used to style the components.
 Most of the components are native except for a few which can be complex.
 
-**Note - Please install node version 20.19.x to run the project. **
+**Note - Please install node version 20.19.x to run the project.**
 
 ## How to run
 
