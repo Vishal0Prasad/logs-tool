@@ -102,12 +102,9 @@ export const Filter = ({
 					placeholderText="From"
 					isClearable={true}
 					onChange={(date: Date | null) => {
-						console.log(date);
 						if (date === null) {
-							console.log(date);
 							actions.handleDate("start", "");
 						}
-						console.log(date?.toISOString());
 						actions.handleDate("start", date?.toISOString());
 					}}
 				/>
@@ -134,7 +131,6 @@ export const Filter = ({
 					isClearable={true}
 					onChange={(date: Date | null) => {
 						if (date === null) {
-							console.log(date);
 							actions.handleDate("end", "");
 						}
 						actions.handleDate("end", date?.toISOString());
